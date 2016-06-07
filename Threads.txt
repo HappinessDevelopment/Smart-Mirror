@@ -1,0 +1,56 @@
+#these are the threads that will be able to be run at the same time
+
+def sensorReading():
+            var = 1
+            while (var == 1):
+                GPIO.setmode(GPIO.BCM)
+                TRIG = 23
+                ECHO = 24
+                print ("Distance Measurement In Progress")
+                GPIO.setup(TRIG,GPIO.OUT)
+                GPIO.setup(ECHO,GPIO.IN)
+                GPIO.output(TRIG, False)
+                print ("Waiting For Sensor To Settle")
+                time.sleep(2)
+                GPIO.output(TRIG, True)
+                time.sleep(0.00001)
+                GPIO.output(TRIG, False)
+                while GPIO.input(ECHO)==0:
+                    pulse_start = time.time()
+                while GPIO.input(ECHO)==1:
+                    pulse_end = time.time()
+                pulse_duration = pulse_end - pulse_start
+                distance = pulse_duration * 17150
+                distance = round(distance, 2)
+                if distance <= 10:
+                    pyautogui.keyDown('right')
+                    pyautogui.keyUp('right')
+                    print("right key pressed")
+                print ("Distance:",distance,"cm")
+                GPIO.cleanup()
+
+        def refreshingDateTime():
+            var = 1
+            while (var == 1):
+                #date/time
+                now = (time.strftime("%I:%M"))
+                today = (time.strftime("%A"))
+                date = (time.strftime("%B %d"))
+        
+                #weather
+                key = "9cd32fa160722b58"
+                url = 'http://api.wunderground.com/api/' + key + '/geolookup/conditions/q/PA/98011.json'
+                f = urlopen(url)
+                json_string = f.read()
+                parsed_json = json.loads(json_string.decode())
+                city = parsed_json['location']['city']
+                state = parsed_json['location']['state']
+                weather = parsed_json['current_observation']['weather']
+                temperature_string = parsed_json['current_observation']['temperature_string']
+                f.close()
+
+
+       # runSensors = threading.Thread(target=sensorReading)
+       # runSensors.start()
+       # refreshDateTime = threading.Thread(target=refreshingDateTime)
+       # refreshDateTime.start()
