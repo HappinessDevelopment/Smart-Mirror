@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<AnchorPane id="MainScreenPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" styleClass="background" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="Controllers.MainScreenPaneController">
+  <children>
+    <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="360.0" spacing="0.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="30.0">
+      <children>
+        <Label fx:id="mainDate" alignment="CENTER_RIGHT" maxWidth="400.0" minWidth="-Infinity" prefWidth="360.0" styleClass="label-title-main, label-small" text="Monday, May 2nd">
+          <VBox.margin>
+            <Insets />
+          </VBox.margin>
+        </Label>
+        <Label fx:id="mainTime" alignment="CENTER_RIGHT" maxWidth="400.0" minWidth="-Infinity" prefWidth="360.0" styleClass="label-title-main, label-large" text="3:34 PM" />
+        <Label fx:id="mainDegree" alignment="CENTER_RIGHT" maxWidth="400.0" minWidth="-Infinity" prefWidth="360.0" styleClass="label-title-main, label-meduim" text="73" />
+      </children>
+      <padding>
+        <Insets top="10.0" />
+      </padding>
+    </VBox>
+  </children>
+  <stylesheets>
+    <URL value="@/DarkTheme.css" />
+  </stylesheets>
+</AnchorPane>

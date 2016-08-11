@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import java.net.URL?>
+<AnchorPane id="WeatherScreenPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" styleClass="background" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="Controllers.WeatherScreenPaneController">
+  <children>
+    <VBox id="" layoutX="0.0" layoutY="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" spacing="0.0">
+      <children>
+        <Label id="title" alignment="CENTER_LEFT" cache="false" disable="false" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" mouseTransparent="false" pickOnBounds="false" prefHeight="50.0" prefWidth="360.0" styleClass="label-bright, label-title" text="Bothell, WA" textAlignment="CENTER" textOverrun="ELLIPSIS" underline="false" wrapText="false">
+          <font>
+            <Font name="Verdana" size="50.0" />
+          </font>
+          <VBox.margin>
+            <Insets left="31.0" right="20.0" />
+          </VBox.margin>
+        </Label>
+        <Line endX="340.0" startX="0.0" stroke="GREY" strokeDashOffset="0.0" strokeWidth="2.0" translateX="1.0" translateY="-6.0">
+          <VBox.margin>
+            <Insets left="30.0" right="30.0" />
+          </VBox.margin>
+        </Line>
+        <Label fx:id="date" alignment="CENTER" contentDisplay="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="340.0" styleClass="label-title-main, label-small" text="Monday, May 2nd">
+          <VBox.margin>
+            <Insets left="30.0" right="20.0" />
+          </VBox.margin>
+        </Label>
+        <Label fx:id="degree" alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="-1.0" prefWidth="360.0" styleClass="label-header-degree" text="73" textAlignment="CENTER" wrapText="false">
+          <VBox.margin>
+            <Insets left="20.0" right="20.0" fx:id="x3" />
+          </VBox.margin>
+        </Label>
+        <GridPane alignment="CENTER" disable="false" focusTraversable="false" prefHeight="306.0" prefWidth="320.0" styleClass="label-weather-info" vgap="20.0" visible="true" VBox.margin="$x3">
+          <children>
+            <Label prefHeight="30.000099999997474" prefWidth="200.0" text="Sunrise" GridPane.columnIndex="0" GridPane.rowIndex="0">
+              <GridPane.margin>
+                <Insets fx:id="x1" />
+              </GridPane.margin>
+            </Label>
+            <Label maxWidth="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="200.0" text="High" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="1" />
+            <Label maxWidth="-Infinity" minWidth="-Infinity" prefHeight="22.999900000002526" prefWidth="200.0" text="Low" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="2" />
+            <Label maxWidth="-Infinity" minWidth="-Infinity" prefHeight="22.999900000002526" prefWidth="200.0" text="Sunset" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="3" />
+            <Label fx:id="sunriseTime" alignment="CENTER_RIGHT" contentDisplay="RIGHT" minWidth="-Infinity" prefHeight="30.0" prefWidth="180.0" text="5:36 AM" GridPane.columnIndex="1" GridPane.margin="$x1" GridPane.rowIndex="0" />
+            <Label fx:id="highDegree" alignment="CENTER_RIGHT" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="30.000099999997474" prefWidth="180.0" text="95" GridPane.columnIndex="1" GridPane.rowIndex="1">
+              <GridPane.margin>
+                <Insets right="5.0" fx:id="x2" />
+              </GridPane.margin>
+            </Label>
+            <Label fx:id="lowDegree" alignment="CENTER_RIGHT" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="180.0" text="63" GridPane.columnIndex="1" GridPane.margin="$x2" GridPane.rowIndex="2" />
+            <Label fx:id="sunsetTime" alignment="CENTER_RIGHT" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="23.000099999997474" prefWidth="180.0" text="9:25 PM" GridPane.columnIndex="1" GridPane.margin="$x2" GridPane.rowIndex="3" />
+          </children>
+          <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="180.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="180.0" />
+          </columnConstraints>
+          <padding>
+            <Insets fx:id="x1" />
+          </padding>
+          <rowConstraints>
+            <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          </rowConstraints>
+        </GridPane>
+      </children>
+      <padding>
+        <Insets fx:id="x1" />
+      </padding>
+    </VBox>
+  </children>
+  <padding>
+    <Insets fx:id="x1" />
+  </padding>
+  <stylesheets>
+    <URL value="@/DarkTheme.css" />
+  </stylesheets>
+</AnchorPane>

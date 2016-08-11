@@ -1,0 +1,25 @@
+.pagination {
+    -fx-border-color:  #67666A;
+    -fx-arrows-visible: false;
+    -fx-page-information-visible: false;
+}
+
+.pagination .page {
+    -fx-background-color: #67666A;
+}
+
+.pagination .control-box {
+    -fx-spacing: 20;
+}
+
+.pagination .pagination-control {
+    -fx-background-color: #1d1d1d;
+}
+
+.pagination .pagination-control .bullet-button {
+    -fx-background-color: transparent, #67666A, #67666A, #67666A, #67666A;
+}
+
+.pagination .pagination-control .bullet-button:selected {
+    -fx-background-color: transparent, #CBC9CF, #CBC9CF, #CBC9CF, #CBC9CF;
+}
