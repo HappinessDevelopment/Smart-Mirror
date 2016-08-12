@@ -3,64 +3,115 @@ package BusInfo;
 import java.util.List;
 
 /**
- * Created by Burhan N on 8/7/2016.
+ * @author Magic Mirror Group
+ * @version 2
+ *
+ * Class is used for parsing the json of the bus information using the Gson method where we use classes and variables for assigning the different variables.
  */
 public class BusInfo {
+    // The current time in milliseconds
     private long currentTime;
+    // Another object inside the BusInfo class that holds the Entries and References.
     private Data data;
 
+    /**
+     * Default constructor used for assigning the information to the instance variables.
+     * @param currentTime The current time in milliseconds.
+     * @param data Another object inside BusInfo
+     */
     public BusInfo(long currentTime, Data data){
         this.currentTime = currentTime;
         this.data = data;
     }
 
+    /**
+     * Method reutns the current time in milliseconds.
+     * @return Returning long representing the milliseconds.
+     */
     public long getCurrentTime() {
         return currentTime;
     }
 
+    /**
+     * Method returns the data object that holds more information about the bus information.
+     * @return Returns an object containing more information about the bus arrival time.
+     */
     public Data getData() {
         return data;
     }
 
+    /**
+     * Class created to hold more information about the bus arrival time.
+     */
     public class Data {
+        // This instance variable hold more information about the arrival time of the buses.
         private Entry entry;
+        // Holds information description about the different buses.
         private References references;
 
-
+        /**
+         * Constructor used for assigning the instance variables.
+         * @param entry Information about the arrival times.
+         * @param references Information about the buses.
+         */
         public Data(Entry entry, References references){
             this.entry = entry;
             this.references = references;
         }
 
+        /**
+         * Method returns the object that holds the arrival information.
+         * @return Returns an entry class object.
+         */
         public Entry getEntry() {
             return entry;
         }
 
+        /**
+         * Method returns the object that holds the bus description information.
+         * @return Returns the object references.
+         */
         public References getReferences() {
             return references;
         }
 
+        /**
+         * This class holds information about the different routes and their bus arrival times.
+         */
         public class Entry {
+            // List of all the different routes and they schedules.
             private List<Entry.StopRoute> stopRouteSchedules;
 
+            /**
+             * Constructor used for assigning the instance variable.
+             * @param stopRouteSchedules The list of routes received from the link.
+             */
             public Entry (List<Entry.StopRoute> stopRouteSchedules){
                 this.stopRouteSchedules = stopRouteSchedules;
             }
 
+            /**
+             * Method that returns the list of all the routes.
+             * @return Returns a list of the routes.
+             */
             public List<Entry.StopRoute> getStopRouteSchedules() {
                 return stopRouteSchedules;
             }
 
+            /**
+             * Class that stores information about the different stops and their bu arrival times.
+             */
             public class StopRoute {
-                private long routeID;
+                // Id for the bus.
+                private String routeID;
                 private List<Entry.StopRoute.StopRouteDirect> stopRouteDirectionSchedules;
 
-                public StopRoute(long routeID, List<Entry.StopRoute.StopRouteDirect> stopRouteDirectionSchedules){
+                public StopRoute(String routeID, List<Entry.StopRoute.StopRouteDirect> stopRouteDirectionSchedules){
                     this.routeID = routeID;
                     this.stopRouteDirectionSchedules = stopRouteDirectionSchedules;
                 }
 
-                public long getRouteID() {
+                public String getRouteID() {
                     return routeID;
                 }
 
@@ -126,11 +177,11 @@ public class BusInfo {
             public class Route {
                 private long angencyId;
                 private String description;
-                private long id;
+                private String id;
                 private long shortName;
                 private long type;
 
-                public Route(long angencyId, String description, long id, long shortName, long type){
+                public Route(long angencyId, String description, String id, long shortName, long type){
                     this.angencyId = angencyId;
                     this.description = description;
                     this.id = id;
@@ -146,7 +197,7 @@ public class BusInfo {
                     return description;
                 }
 
-                public long getId() {
+                public String getId() {
                     return id;
                 }
 

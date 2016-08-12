@@ -65,7 +65,7 @@ public class Event {
     }
 
     public static void main(String args[]){
-        ParsingJson parsed = new ParsingJson();
+        EventsDriver parsed = new EventsDriver();
         Events.Event[] list = parsed.getGson();
         System.out.println(list[1].getDescription());
     }

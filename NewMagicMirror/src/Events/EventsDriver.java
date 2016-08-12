@@ -19,12 +19,12 @@ import java.util.Calendar;
  * the events from the UW Bothell calendar to be parsed.
  * Created by Burhan N on 6/27/2016.
  */
-public class ParsingJson {
+public class EventsDriver {
     private final String hostURL = "https://api.fenixfox.net/events.json";
     private HttpURLConnection urlConnection;
     private Event[] gson;
 
-    public ParsingJson() {
+    public EventsDriver() {
         try {
             gson = (new Gson().fromJson(readJSONFeed(hostURL), Event[].class));
         } catch (Exception e) {

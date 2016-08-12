@@ -14,9 +14,9 @@ import java.net.URL;
  */
 public class WeatherDriver {
         // By city name
-        //private final String hostUrl = "http://api.openweathermap.org/data/2.5/weather?q=Bothell&mode=json&appid=a6b9ffa2bef75a10e03fbe2ebb68d8f5";
+        private final String hostUrl = "http://api.openweathermap.org/data/2.5/weather?q=Bothell&mode=json&appid=a6b9ffa2bef75a10e03fbe2ebb68d8f5";
         // By city id
-        private final String hostUrl = "http://api.openweathermap.org/data/2.5/weather?id=5787829&mode=json&appid=a6b9ffa2bef75a10e03fbe2ebb68d8f5";
+        //private final String hostUrl = "http://api.openweathermap.org/data/2.5/weather?id=5787829&mode=json&appid=a6b9ffa2bef75a10e03fbe2ebb68d8f5";
         private WeatherJsonObject weather;
 
         public WeatherDriver(){
