@@ -2,14 +2,12 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Pagination;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.util.Callback;
 import javafx.util.Duration;
 
@@ -27,9 +25,11 @@ public class SceneBuilder extends Application {
     private AnchorPane mainScreenPane;
     private AnchorPane eventScreenPane;
     private AnchorPane mapsScreenPane;
+    private AnchorPane busInformationScreenPane;
 
     // Number of pages we are displaying
-    private final int NUMBER_OF_PAGES = 4;
+    private final int NUMBER_OF_PAGES = 5;
+    private final int DURATION = 2;
 
     public static void main (String args[]){
         // Running the program.
@@ -44,7 +44,7 @@ public class SceneBuilder extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         // Making page holder for the different pages.
-        pagination = new Pagination(NUMBER_OF_PAGES, 1);
+        pagination = new Pagination(NUMBER_OF_PAGES, 2);
         // Setting the style to bullet point.
         pagination.getStyleClass().add(Pagination.STYLE_CLASS_BULLET);
         // Adding more style to the page holder.
@@ -62,14 +62,14 @@ public class SceneBuilder extends Application {
             }
         });
         // Setting up slideshow for screens.
-        Timeline slideShow = new Timeline(new KeyFrame(Duration.seconds(NUMBER_OF_PAGES), event -> {
+        Timeline slideShow = new Timeline(new KeyFrame(Duration.seconds(DURATION), event -> {
             int pos = (pagination.getCurrentPageIndex() +1) % pagination.getPageCount();
             pagination.setCurrentPageIndex(pos);
         }));
         // Slide show will go forever.
         slideShow.setCycleCount(Timeline.INDEFINITE);
         // Starting the slideshow.
-        slideShow.play();
+        //slideShow.play();
 
         // Setting up the base anchor pane that holds the pagination.
         AnchorPane anchor = new AnchorPane();
@@ -86,6 +86,9 @@ public class SceneBuilder extends Application {
         primaryStage.setTitle("FXML");
         // Preventing multiple windows from opening up. Using same window each time.
         primaryStage.setOnCloseRequest(e -> Platform.exit());
+        // Makes the primary stage full screen.
+        //primaryStage.setMaximized(true);
+        //primaryStage.setFullScreen(true);
         // Displaying the stage.
         primaryStage.show();
     }
@@ -98,21 +101,25 @@ public class SceneBuilder extends Application {
     public Node getPage(int param){
         try {
             if (param == 0) {
-                // Getting the weather pane.
-                weatherPane = FXMLLoader.load(SceneBuilder.class.getResource("\\Screens\\WeatherScreen.fxml"));
-                return weatherPane;
-            } else if (param == 1) {
-                // Getting the main screen pane.
-                mainScreenPane = FXMLLoader.load(SceneBuilder.class.getResource("\\Screens\\MainScreen.fxml"));
-                return mainScreenPane;
-            } else if (param == 2) {
-                // Getting the map screen pane.
-                mapsScreenPane = FXMLLoader.load(SceneBuilder.class.getResource("\\Screens\\MapScreen.fxml"));
-                return mapsScreenPane;
-            } else {
                 // Getting the event screen pane.
                 eventScreenPane = FXMLLoader.load(SceneBuilder.class.getResource("\\Screens\\EventsScreen.fxml"));
                 return eventScreenPane;
+            } else if (param == 1) {
+                // Getting the weather pane.
+                weatherPane = FXMLLoader.load(SceneBuilder.class.getResource("\\Screens\\WeatherScreen.fxml"));
+                return weatherPane;
+            } else if (param == 2) {
+                // Getting the main screen pane.
+                mainScreenPane = FXMLLoader.load(SceneBuilder.class.getResource("\\Screens\\MainScreen.fxml"));
+                return mainScreenPane;
+            }else if(param == 3){
+                // Getting the bus information screen pane.
+                busInformationScreenPane = FXMLLoader.load(SceneBuilder.class.getResource("\\Screens\\BusInformationScreen.fxml"));
+                return busInformationScreenPane;
+            } else {
+                // Getting the map screen pane.
+                mapsScreenPane = FXMLLoader.load(SceneBuilder.class.getResource("\\Screens\\MapScreen.fxml"));
+                return mapsScreenPane;
             }
         }catch(Exception e){
             e.printStackTrace();

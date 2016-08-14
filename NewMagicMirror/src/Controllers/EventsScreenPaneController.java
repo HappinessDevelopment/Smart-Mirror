@@ -21,7 +21,7 @@ public class EventsScreenPaneController {
     private ScrollPane scrollPane;
 
     @FXML
-    public void initialize() {
+    private void initialize() {
         // Parsing the list of events
         EventsDriver parsed = new EventsDriver();
         Event[] list = parsed.getGson();

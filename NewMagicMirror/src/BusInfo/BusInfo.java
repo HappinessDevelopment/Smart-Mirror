@@ -120,14 +120,20 @@ public class BusInfo {
                 }
 
                 public class StopRouteDirect {
+                    private String tripHeadsign;
                     private List<Entry.StopRoute.StopRouteDirect.ScheduleStopTime> scheduleStopTimes;
 
-                    public StopRouteDirect (List<Entry.StopRoute.StopRouteDirect.ScheduleStopTime> scheduleStopTimes){
+                    public StopRouteDirect (String tripHeadsign, List<Entry.StopRoute.StopRouteDirect.ScheduleStopTime> scheduleStopTimes){
+                        this.tripHeadsign = tripHeadsign;
                         this.scheduleStopTimes = scheduleStopTimes;
                     }
 
                     public List<Entry.StopRoute.StopRouteDirect.ScheduleStopTime> getScheduleStopTimes() {
                         return scheduleStopTimes;
+                    }
+
+                    public String getTripHeadsign() {
+                        return tripHeadsign;
                     }
 
                     public class ScheduleStopTime {

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="com.google.code.gson:gson:2.7">
+    <archive path="C:/Users/Burhan N/.m2/repository/com/google/code/gson/gson/2.7/gson-2.7.jar" />
+  </library>
+  <library name="guava-19.0">
+    <archive path="C:/Users/Burhan N/Downloads/guava-19.0.jar" />
+  </library>
+  <library name="jfoenix">
+    <archive path="C:/Users/Burhan N/Downloads/jfoenix.jar" />
+  </library>
+</eclipse-userlibraries>
+

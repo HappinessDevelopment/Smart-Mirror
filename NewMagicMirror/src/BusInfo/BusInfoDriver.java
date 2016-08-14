@@ -9,58 +9,106 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 /**
- * @author Magic Mirror Group
- * @version 2
- *
- * This class pulls in the bus information from the given link below. The information can now be used in the app to identify when a certain bus will appear.
+ * Created by Burhan N on 8/7/2016.
+ * Edited by Jessica N on 8/7/2016.
+ * 3x5 multidimensional array to store bus route sizes
+ * BST to store actual stop info
+ * Nested for loops to access all of the stop info and push to BST
+ * Display prints all the buses sorted by soonest arrival time
  */
 public class BusInfoDriver {
-    // Link that returns a json format of the bus information.
-    private final String HOST_URL = "http://api.pugetsound.onebusaway.org/api/where/schedule-for-stop/1_76305.json?key=65f351d5-6625-4a62-af86-88c05ae26b54";
-    // Class used for parsing the json link when connected.
-    private BusInfo busData;
+    private final String hostUrl = "http://api.pugetsound.onebusaway.org/api/where/schedule-for-stop/1_76305.json?key=65f351d5-6625-4a62-af86-88c05ae26b54";
+    private BusInfo busInfo;
+    private Node root;
 
-    /**
-     * This public constructor connects the link and saves the json format of the bus information as a Gson in a class called BusInfo.
-     */
     public BusInfoDriver(){
         try{
-            // Converting string representation of the link into a url.
-            URL url = new URL(HOST_URL);
-            // Requesting connection to link.
+            URL url = new URL(hostUrl);
             HttpURLConnection request = (HttpURLConnection) url.openConnection();
-            // Connecting to the link.
             request.connect();
-            // Using a json parser to parse the information received from link.
             JsonParser jp = new JsonParser();
-            // Taking in each parsed section as an element.
             JsonElement root = jp.parse(new InputStreamReader((InputStream) request.getContent()));
-            // Making the root element parsed an object.
             JsonObject rootObj = root.getAsJsonObject();
-            // Filling our busData with the json object from above so we can use the different information provided from the link.
-            busData = (new Gson().fromJson(rootObj, BusInfo.class));
+            busInfo = (new Gson().fromJson(rootObj, BusInfo.class));
         }catch(Exception e){
-            // Any error found will be printed along witb order of statements executed to the error.
             e.printStackTrace();
+        }
+        root = null;
+    }
+
+    public BusInfo getData(){
+        return busInfo;
+    }
+
+    public Node getRoot(){
+        return root;
+    }
+
+    //insert the bus info to the BSTree
+    public void insert(String desc, long time, int bus){
+        Node newNode = new Node(desc, time, bus);
+        if (root == null){
+            root = newNode;
+            return;
+        }
+
+        Node current = root;
+        Node parent;
+        while(true){
+            parent = current;
+            if (time<current.time){
+                current = current.left;
+                if(current==null) {
+                    parent.left = newNode;
+                    return;
+                }
+            } else {
+                current = current.right;
+                if(current==null){
+                    parent.right = newNode;
+                    return;
+                }
+            }
         }
     }
 
-    /**
-     * Used for testing this driver to see if its actually parsing the link and returning the right information.
-     * @param args
-     */
-    public static void main (String args[]){
-//       BusInfoDriver test = new BusInfoDriver();
-//       System.out.println(test.getData().getData().getReferences().getRoutes().get(0).getDescription());
-    }
+    public class Node {
+        private String desc;
+        private long time;
+        private int bus;
+        private Node left;
+        private Node right;
 
-    /**
-     * This method is used for returning the bus data so we can use the different information provided from the link.
-     * @return Returns the BusInfo class because it holds all the information needed to display the bus information.
-     */
-    public BusInfo getData(){
-        return busData;
+        Node(String desc, long time, int bus){
+            this.desc = desc;
+            this.time = time;
+            this.bus = bus;
+            left = null;
+            right = null;
+        }
+
+        public String getDesc(){
+            return desc;
+        }
+
+        public long getTime(){
+            return time;
+        }
+
+        public int getBus(){
+            return bus;
+        }
+
+        public BusInfoDriver.Node getLeft(){
+            return left;
+        }
+
+        public BusInfoDriver.Node getRight(){
+            return right;
+        }
     }
 }
+

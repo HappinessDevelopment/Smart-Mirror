@@ -10,7 +10,7 @@ import java.util.Calendar;
  * Created by Burhan N on 8/8/2016.
  */
 public class MainScreenPaneController {
-    private final String[] strDays = new String[] {"Saturday", "Sunday", "Monday", "Tuesday","Wednesday", "Thursday", "Friday"};
+    private final String[] strDays = new String[] {"Sunday", "Monday", "Tuesday","Wednesday", "Thursday", "Friday", "Saturday"};
     private final String[] strMonths = new String[] {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
     private final String[] strAMPM = new String[] {"AM", "PM"};
     private final String[] ordinalIndicator = new String[] {"st", "nd", "rd", "th"};
@@ -50,7 +50,7 @@ public class MainScreenPaneController {
             default: indicator = ordinalIndicator[3];
                 break;
         }
-        mainDate.setText(String.valueOf(strDays[today.get(Calendar.DAY_OF_WEEK)]) + ", " + strMonths[today.get(Calendar.MONTH)] + " " + today.get(Calendar.DAY_OF_MONTH) + indicator);
+        mainDate.setText(String.valueOf(strDays[today.get(Calendar.DAY_OF_WEEK) - 1]) + ", " + strMonths[today.get(Calendar.MONTH)] + " " + today.get(Calendar.DAY_OF_MONTH) + indicator);
         mainTime.setText(getTime());
         mainDegree.setText(Integer.toString((int) parsingWeather.getWeather().getMain().getTemp()) + "\u00b0");
     }
