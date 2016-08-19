@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import java.net.URL?>
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" styleClass="background" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="Controllers.BusInformationScreenPaneControl">
+  <children>
+    <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="360.0" styleClass="background" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
+      <children>
+        <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="360.0" styleClass="label-title, label-bright" text="Bus Schedule" />
+        <Line endX="360.0" startX="0.0" stroke="GREY" strokeWidth="1.2" translateY="-5.0" />
+        <HBox alignment="CENTER" fillHeight="true" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="-1.0" prefWidth="360.0" spacing="20.0" styleClass="background">
+          <children>
+            <Label alignment="CENTER_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="190.0" text="Route">
+              <font>
+                <Font size="16.0" fx:id="x1" />
+              </font>
+            </Label>
+            <Label alignment="CENTER" font="$x1" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0" text="Bus #" />
+            <Label font="$x1" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="80.0" text="Arriving In" />
+          </children>
+          <padding>
+            <Insets bottom="10.0" top="10.0" />
+          </padding>
+        </HBox>
+        <Line endX="360.0" startX="0.0" stroke="GREY" strokeWidth="1.2" translateY="0.0" />
+        <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="360.0" styleClass="background" vbarPolicy="NEVER">
+          <content>
+            <VBox fx:id="vBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="360.0" styleClass="background" />
+          </content>
+        </ScrollPane>
+      </children>
+    </VBox>
+  </children>
+  <stylesheets>
+    <URL value="@/DarkTheme.css" />
+  </stylesheets>
+</AnchorPane>

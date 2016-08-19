@@ -11,7 +11,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 
 /**

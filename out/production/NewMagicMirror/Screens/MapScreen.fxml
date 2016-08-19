@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.web.WebView?>
+<?import java.net.URL?>
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" styleClass="background" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="Controllers.MapsScreenPaneController">
+  <children>
+    <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="360.0" styleClass="background" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
+      <children>
+        <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="360.0" styleClass="label-title, label-bright" text="Traffic &amp; Road Closures" />
+        <Line endX="360.0" startX="0.0" stroke="GREY" strokeWidth="1.2" translateY="-5.0" />
+        <HBox alignment="CENTER_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="-1.0" prefWidth="360.0" spacing="10.0" styleClass="background">
+          <children>
+            <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="190.0" text="Description" />
+            <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="90.0" text="Duration" />
+            <Label text="Reason" />
+          </children>
+        </HBox>
+        <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="254.0" prefWidth="360.0" styleClass="background" vbarPolicy="NEVER">
+          <content>
+            <VBox fx:id="vBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="360.0" styleClass="background" />
+          </content>
+        </ScrollPane>
+        <WebView fx:id="webView" minHeight="218.0" minWidth="360.0" prefHeight="254.0" prefWidth="360.0" styleClass="null" />
+      </children>
+      <padding>
+        <Insets />
+      </padding>
+    </VBox>
+  </children>
+  <stylesheets>
+    <URL value="@/DarkTheme.css" />
+  </stylesheets>
+</AnchorPane>
